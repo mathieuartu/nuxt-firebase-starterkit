@@ -1,0 +1,97 @@
+// COLORS
+$color-primary-green: #47B27A;
+$color-primary-orange: #F3AD1A;
+
+$color-secondary-green: #DDF1E6;
+$color-secondary-orange: #FBE2AF;
+$color-secondary-blue: #3A9967;
+$color-secondary-red: #FD595E;
+
+$color-neutral-black: #000000;
+$color-neutral-dark-grey: #585858;
+$color-neutral-medium-grey: #808080;
+$color-neutral-light-grey: #CCCCCC;
+$color-neutral-lighter-grey: #E0E0E0;
+$color-neutral-almost-white: #F4F4F4;
+$color-neutral-white: #FFFFFF;
+
+$color-other-green-blue: #64D8C0;
+$color-other-salmon: #FFCA92;
+$color-other-dark-blue: #37474F;
+$color-other-light-blue: #E8F1FD;
+
+$color-explore: #6A509D;
+$color-makers: #A8D8CC;
+
+// SOCIAL COLORS
+$color-youtube: #E52D27;
+$color-facebook: #3B5998;
+$color-twitter: #1AB7EA;
+$color-googleplus: #DA2713;
+$color-pinterest: #CB2027;
+
+// FONTS
+$font-family-main: "Lato", Helvetica, sans-serif;
+$font-family-title: "Poppins", Helvetica, sans-serif;
+$font-family-fa: "Font Awesome 5 Pro";
+
+$font-size-xxsmall: 8px;
+$font-size-xsmall: 10px;
+$font-size-small: 12px;
+$font-size-medium: 14px;
+$font-size-large: 16px;
+$font-size-xlarge: 18px;
+
+$font-size-title-xsmall: 18px;
+$font-size-title-small: 24px;
+$font-size-title-medium: 32px;
+$font-size-title-large: 48px;
+$font-size-title-xlarge: 64px;
+$font-size-title-xxlarge: 72px;
+
+// SPACERS
+$spacer-xsmall: 5px;
+$spacer-small: 8px;
+$spacer: 10px;
+$spacer-medium: 15px;
+$spacer-large: 20px;
+$spacer-xlarge: 30px;
+$spacer-xxlarge: 40px;
+$spacer-xxxlarge: 50px;
+$spacer-section: 70px;
+$spacer-max: 100px;
+
+// RADIUSES
+$radius-small: 3px;
+$radius-medium: 4px;
+$radius-large: 6px;
+$radius-xlarge: 10px;
+$radius-xxlarge: 20px;
+
+// BOX-SHADOW
+$box-shadow-ultralight: 0px 2px 3px rgba(0, 0, 0, 0.05);
+$box-shadow-light: 0px 2px 5px rgba(0, 0, 0, 0.15);
+$box-shadow-medium: 0px 3px 15px rgba(0, 0, 0, 0.15);
+
+// Z-INDEXES
+$z-index-max: 1000;
+$z-index-min: 1;
+
+// TEXT-INDENT
+$text-indent-max: -10000px;
+
+// GENERIC DIMENSIONS
+$header-height: 64px;
+$checkout-max-width: 660px;
+$input-height: 50px;
+$sidebar-width: 260px;
+
+// WRAPPER DIMENSIONS
+$max-container-width-small: 450px;
+$max-container-width-medium: 720px;
+$max-container-width-large: 1140px;
+
+// BREAKPOINTS
+$breakpoint-desktop: 1400px;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 375px;

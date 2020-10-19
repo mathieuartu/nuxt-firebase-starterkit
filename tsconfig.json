@@ -1,0 +1,52 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "lib": [
+            "esnext",
+            "esnext.asynciterable",
+            "dom"
+        ],
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "allowJs": true,
+        "sourceMap": true,
+        "strict": true,
+        "baseUrl": ".",
+        "paths": {
+            "~/*": [
+                "./*"
+            ],
+            "@/*": [
+                "./*"
+            ],
+            "@platform-ui/*": [
+                "./platform-ui/components/*"
+            ],
+        },
+        "types": [
+            "@types/node",
+            "@nuxt/types",
+            "@types/jest"
+        ]
+    },
+    "files": [
+        "ts-shim.d.ts"
+    ],
+    "include": [
+        "core/**/*.ts",
+        "locales/**/*.ts",
+        "middleware/**/*.ts",
+        "modules/**/*.ts",
+        "plugins/**/*.ts",
+        "server/**/*.ts",
+        "store/**/*.ts",
+        "tests/**/*.ts",
+        "layouts/**/*.vue",
+        "pages/**/*.vue",
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

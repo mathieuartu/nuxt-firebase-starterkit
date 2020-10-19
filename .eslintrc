@@ -1,0 +1,56 @@
+{
+    "root": true,
+    "env": {
+        "node": true,
+        "jest": true
+    },
+    "extends": [
+        "@nuxtjs/eslint-config-typescript",
+        "eslint:recommended",
+        "plugin:vue/recommended",
+        "plugin:prettier/recommended",
+        "prettier/vue"
+    ],
+    "plugins": [
+        "vue",
+        "prettier"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly",
+        "$nuxt": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "rules": {
+        "vue/component-name-in-template-casing": [
+            "error",
+            "PascalCase"
+        ],
+        "no-var": [
+            "error"
+        ],
+        "prettier/prettier": [
+            "error",
+            {},
+            {
+                "usePrettierrc": true
+            }
+        ],
+        "vue/html-indent": [
+            "error",
+            4
+        ],
+        "@typescript-eslint/no-unused-vars": [
+            "error",
+            {
+                "args": "after-used"
+            }
+        ],
+        "standard/computed-property-even-spacing": [
+            0
+        ]
+    }
+}
