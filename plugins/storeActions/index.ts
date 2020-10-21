@@ -2,13 +2,13 @@ import { Plugin } from '@nuxt/types'
 import Vue, { ComponentOptions } from 'vue'
 import { Store } from 'vuex'
 
-import { exampleStoreActions } from '@/plugins/storeActions/example'
+import { authStoreActions } from '@/plugins/storeActions/auth'
 
 export class StoreActions {
-    example: ReturnType<typeof exampleStoreActions>
+    auth: ReturnType<typeof authStoreActions>
 
     constructor(dispatch: any) {
-        this.example = exampleStoreActions(dispatch)
+        this.auth = authStoreActions(dispatch)
     }
 }
 

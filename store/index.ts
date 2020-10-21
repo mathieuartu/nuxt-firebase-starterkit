@@ -1,5 +1,4 @@
-import { ActionTree, ActionContext } from 'vuex'
-import { Context as AppContext } from '@nuxt/types'
+import { ActionTree } from 'vuex'
 
 import { DeepPartial } from '@/index.d.ts'
 
@@ -7,27 +6,35 @@ import { DeepPartial } from '@/index.d.ts'
 import dispatch from '@/store/plugins/dispatch'
 
 // Internal states
+import { AuthState } from '@/store/auth'
 import { SiteState } from '@/store/site'
+
+// Plugins export
 export const plugins = [dispatch]
 
 // State
 export interface RootState {
+    auth?: DeepPartial<AuthState>
     site?: DeepPartial<SiteState>
 }
 export const state = () => {}
 
-// Actions
-interface CustomAppContext extends Omit<AppContext, 'req'> {
-    req: {}
-}
+// Action
+export const actions: ActionTree<RootState, RootState> = {
+    async nuxtServerInit({ dispatch }, { res }) {
+        if (res && res.locals && res.locals.user) {
+            const { allClaims: claims, ...authUser } = res.locals.user
 
-interface Actions<S, R> extends ActionTree<S, R> {
-    nuxtServerInit(
-        actionContext: ActionContext<S, R>,
-        appContext: CustomAppContext
-    ): void
-}
-
-export const actions: Actions<RootState, RootState> = {
-    async nuxtServerInit() {},
+            await dispatch(
+                'auth/onAuthStateChanged',
+                {
+                    authUser,
+                    claims,
+                },
+                {
+                    root: true,
+                }
+            )
+        }
+    },
 }

@@ -16,6 +16,9 @@
 .nuxt/
 sw.*
 
+### STATIC ###
+/static/*.js
+
 ### GENERATED LOCALES ###
 locales/*.json
 

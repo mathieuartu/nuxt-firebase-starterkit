@@ -2,16 +2,16 @@ export const locales = [
     {
         code: 'fr',
         file: 'fr.json',
-        domain: 'yourwebsite.fr',
+        domain: 'friggo.io',
     },
     {
         code: 'en',
         file: 'en.json',
-        domain: 'yourwebsite.co.uk',
+        domain: 'friggo.io',
     },
 ]
 
-export const defaultLocale = 'fr'
+export const defaultLocale = 'en'
 
 export default {
     locales,

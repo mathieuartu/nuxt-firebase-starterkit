@@ -5,7 +5,6 @@ import { locales, defaultLocale } from './locales/config'
 dotenvExtended.load()
 
 module.exports = {
-    mode: 'universal',
     env: {
         ...process.env,
         locales,
@@ -28,23 +27,29 @@ module.exports = {
     },
     buildModules: ['@nuxt/typescript-build'],
     modules: [
+        '@nuxtjs/pwa',
         '@nuxtjs/axios',
         '@nuxtjs/style-resources',
+        'nuxt-buefy',
         [
             '@nuxtjs/firebase',
             {
                 config: {
-                    apiKey: 'AIzaSyBOwoaXNg1NYfXnFz_NnY3uZmsTHz_foh4',
-                    authDomain: 'friggo-637ec.firebaseapp.com',
-                    databaseURL: 'https://friggo-637ec.firebaseio.com',
-                    projectId: 'friggo-637ec',
-                    storageBucket: 'friggo-637ec.appspot.com',
-                    messagingSenderId: '421354873351',
-                    appId: '1:421354873351:web:6e3f40f869f1d68bf480a2',
-                    measurementId: 'G-8QZH82X19H',
+                    apiKey: process.env.FIREBASE_API_KEY,
+                    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+                    databaseURL: process.env.FIREBASE_DATABASE_URL,
+                    projectId: process.env.FIREBASE_PROJECT_ID,
+                    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+                    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+                    appId: process.env.FIREBASE_APP_ID,
+                    measurementId: process.env.FIREBASE_MEASUREMENT_ID,
                 },
                 services: {
-                    auth: true, // Just as example. Can be any other service.
+                    auth: {
+                        persistence: 'local',
+                        ssr: true,
+                    },
+                    firestore: true,
                 },
             },
         ],
@@ -62,7 +67,7 @@ module.exports = {
                 },
                 lazy: true,
                 langDir: 'locales/',
-                differentDomains: process.env.APP_ENV === 'prod',
+                differentDomains: false,
             },
         ],
         ['~/.build/merge-and-compare-locales.js', { defaultLocale }],
@@ -110,6 +115,24 @@ module.exports = {
                     },
                 })
             }
+        },
+    },
+    firebase: {},
+    pwa: {
+        // disable the modules you don't need
+        meta: false,
+        icon: false,
+        // if you omit a module key form configuration sensible defaults will be applied
+        // manifest: false,
+
+        workbox: {
+            importScripts: [
+                // ...
+                '/firebase-auth-sw.js',
+            ],
+            // by default the workbox module will not install the service worker in dev environment to avoid conflicts with HMR
+            // only set this true for testing and remember to always clear your browser cache in development
+            dev: true,
         },
     },
 }
