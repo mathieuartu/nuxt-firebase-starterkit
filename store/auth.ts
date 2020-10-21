@@ -1,10 +1,8 @@
 import { MutationTree, ActionTree } from 'vuex/types/index'
 
+import { User } from '@/core/User'
 export interface AuthState {
-    user: {
-        uid: string
-        email: string
-    } | null
+    user: User | null
     authError: any
 }
 
@@ -21,12 +19,7 @@ enum mutationTypes {
 
 export const mutations: MutationTree<AuthState> = {
     [mutationTypes.SET_AUTH_USER](state, user) {
-        // eslint-disable-next-line no-console
-        console.log(user)
-        state.user = {
-            email: user.email,
-            uid: user.uid,
-        }
+        state.user = user
     },
     [mutationTypes.SET_AUTH_ERROR](state, error) {
         state.authError = error
@@ -38,8 +31,9 @@ export const mutations: MutationTree<AuthState> = {
 
 export const actions: ActionTree<AuthState, AuthState> = {
     onAuthStateChanged({ commit }, { authUser }) {
-        if (authUser) return commit('SET_AUTH_USER', authUser)
-        return commit('RESET_AUTH_USER')
+        if (authUser)
+            return commit(mutationTypes.SET_AUTH_USER, new User(authUser))
+        return commit(mutationTypes.RESET_AUTH_USER)
     },
     async signInWithEmailAndPassword({ commit }, { email, password }) {
         const userResponse = await this.$fireAuth.signInWithEmailAndPassword(
@@ -54,10 +48,7 @@ export const actions: ActionTree<AuthState, AuthState> = {
         )
             return commit(mutationTypes.SET_AUTH_ERROR, userResponse)
 
-        return commit(mutationTypes.SET_AUTH_USER, {
-            email: userResponse.user.email,
-            uid: userResponse.user.uid,
-        })
+        return commit(mutationTypes.SET_AUTH_USER, new User(userResponse.user))
     },
     async signOut({ commit }) {
         await this.$fireAuth.signOut()

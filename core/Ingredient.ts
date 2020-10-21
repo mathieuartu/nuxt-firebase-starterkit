@@ -1,15 +1,15 @@
 export interface Ingredient {
-    name?: string
-    photoUrl?: string
-    createdBy?: string
-    uid?: string
+    name: string | null
+    photoUrl: string | null
+    createdBy: string | null
+    uid: string | null
 }
 
 export class Ingredient {
     constructor(ingredient: Ingredient) {
-        this.name = ingredient.name || undefined
-        this.photoUrl = ingredient.photoUrl || undefined
-        this.createdBy = ingredient.createdBy || undefined
-        this.uid = ingredient.uid || undefined
+        this.name = ingredient.name || null
+        this.photoUrl = ingredient.photoUrl || null
+        this.createdBy = ingredient.createdBy || null
+        this.uid = ingredient.uid || null
     }
 }

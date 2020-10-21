@@ -1,17 +1,17 @@
 export interface Recipe {
     ingredients?: Array<string>
-    name?: string
-    photoUrl?: string
-    createdBy?: string
-    uid?: string
+    name: string | null
+    photoUrl: string | null
+    createdBy: string | null
+    uid: string | null
 }
 
 export class Recipe {
     constructor(recipe: Recipe) {
         this.ingredients = recipe.ingredients || []
-        this.name = recipe.name || undefined
-        this.photoUrl = recipe.photoUrl || undefined
-        this.createdBy = recipe.createdBy || undefined
-        this.uid = recipe.uid || undefined
+        this.name = recipe.name || null
+        this.photoUrl = recipe.photoUrl || null
+        this.createdBy = recipe.createdBy || null
+        this.uid = recipe.uid || null
     }
 }
